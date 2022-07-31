@@ -388,7 +388,7 @@ d3.select('#intro')
     svg2.append("text")
         
         .attr("y",5)
-        .attr("x", 200)
+        .attr("x", 280)
         .attr("dy", "1em")
         .style("text-anchor", "left")
         .attr("fill","red")
@@ -396,7 +396,7 @@ d3.select('#intro')
         .text("Since 2000 year,food poverty ");
       svg2.append("text")
         .attr("y",20)
-        .attr("x", 200)
+        .attr("x", 280)
         .attr("dy", "1em")
         .style("text-anchor", "left")
         .attr("fill","red")
@@ -534,8 +534,28 @@ svg2.append("path")
         .attr("dy", "1em")
         .attr("font-size",15)
         .text("sub-Saharan Africa ");
-
-
+ svg1.append("circle")
+   .attr("fill", "#D3D3D3")
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+svg1.append("text")
+        
+        .attr("y",5)
+        .attr("x", 280)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("Since 2000 year,food poverty ");
+ svg1.append("text")
+        .attr("y",20)
+        .attr("x", 280)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("decreases drmatically ");
 
   d3.csv("data_info/poverty.csv",
 
