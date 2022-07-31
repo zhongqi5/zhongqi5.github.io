@@ -4,7 +4,7 @@
   <h2>Food Poverty in the World</h2>
 
   <div id="cont">
-    <svg width=800 height=500 id="viz1" style="display:inline-block"></svg>
+    <svg width=800 height=550 id="viz1" style="display:inline-block"></svg>
     <p style="display:inline-block; vertical-align: top;" id="hint"></p>
     <p style="display:inline-block; vertical-align: top;" id="intro"></p>
     <div id="button_cont">
@@ -47,7 +47,7 @@ function GoPage1(){
     .attr("cy",70)
     .attr("cx",135)
     .attr("r",7)
-  d3.csv("massaged_data/1.csv",
+  d3.csv("data_info/1.csv",
 
     function(d){
       return { date : d.year, value : d.World }
@@ -246,7 +246,7 @@ svg.append("circle")
         .attr("font-size",15)
         .text("Low income ");
   
-  d3.csv("massaged_data/cost.csv",
+  d3.csv("data_info/cost.csv",
 
     function(d){
       return { cost: d.cost,  Percent: d.Percent,population:d.population,country:d.country ,Income:d.Income}
@@ -315,16 +315,12 @@ svg.append("circle")
         .style("border", "solid")
         .style("border-width", "1px")
         .style("border-radius", "2px")
-        .style("padding", "3px");
-    
-   
-  
-  
+        .style("padding", "3px");  
   });
 }
-  function GoPage2(){
-    
-    var width =600;
+	
+function GoPage2(){    
+var width =600;
 var height = 400;
 var margin =100;
 d3.select('#bt1').style("visibility", "visible")
@@ -348,8 +344,10 @@ d3.select('#intro')
  }else{
   part0();
  }
+	  
  function part1(){
-  var svg2 = d3.select("#viz1")
+  
+    var svg2 = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
       .attr("height", height + margin + margin)
@@ -380,7 +378,7 @@ d3.select('#intro')
         .attr("dy", "1em")
         .attr("font-size",15)
         .text(" East Asia and Pacific ");
-d3.csv("massaged_data/poverty.csv",
+d3.csv("data_info/poverty.csv",
 
 function(d){
   return { east:d.east ,year:d.year,other:d.other}
@@ -465,8 +463,10 @@ svg2.append("path")
 	
    });
  }
+	
  function part0(){
-  var svg1 = d3.select("#viz1")
+  
+    var svg1 = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
       .attr("height", height + margin + margin)
@@ -513,7 +513,7 @@ svg2.append("path")
 
 
 
-  d3.csv("massaged_data/poverty.csv",
+  d3.csv("data_info/poverty.csv",
 
     function(d){
       return { subSaharan:d.subSaharan , african : d.african, year : d.year,other:d.other }
