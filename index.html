@@ -1,194 +1,687 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Narrative Visualization</title>
-  <link rel="stylesheet" type="text/css" href="styles/fullpage.min.css"></style>
-  <link rel="stylesheet" type="text/css" href="styles/style.css"></style>
-</head>
-<body>
+<html>
 
-  <div id="fullpage">
-    <div class="section">
+<div>
+  <h2>Food Poverty in the World</h2>
 
-      <div class="slide" data-anchor="welcome">
-        <h1>Netflix Original Film IMDB Score Visualization</h1>
-        <div class="intro">
-          <p>&nbsp;</p>
-          <div>Created by Skylar Ripley for CS416 Data Visualization at UIUC</div>
-        </div>
-      </div>
-
-      <div class="slide" data-anchor="dataset">
-        <h2>The Dataset</h2>
-        <div class="intro">
-          <p>
-            The dataset contains all Netflix original films released as of June 1st, 2021, and includes their title,
-            genre, premier date, runtime, IMDB score, and language.
-          </p>
-          <p>
-            The purpose of this visualization is to explore the following question: has Netflix improved at making
-            original films over time?
-            <a class="section-1-button" rel="noopener" href="#charts/about">About the Visualization</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="slide" data-anchor="about">
-        <h2>About the Visualization</h2>
-        <div class="intro">
-          <p>
-            <strong>Interactive Slideshow</strong>
-            This narrative visualization follows an interactive slideshow structure to guide users through
-            various selected scenarios.
-          </p>
-          <p>
-            <strong>Scenes</strong>
-            Three scenes have been included in this visualization using consistent template and layout. User's can
-            navigate through the slideshow by clicking the arrows on the left/right sides of the screen, clicking the
-            navigation dots on top, or using the left/right buttons on a keyboard.
-          </p>
-          <p>
-            <strong>Annotations</strong>
-            Interesting trends are annotated in charts 1 and 2 using black font. These are meant to draw a user's attention
-            to areas of the chart that are important to the overarching question behind the visualization.
-          </p>
-          <p>
-            <strong>Parameters</strong>
-            Charts 2 and 3 include parameters that allow users to interact with the data via filtering. The scenes aim
-            to answer a simple question and these parameters allow users to explore data in more detail.
-          </p>
-          <p>
-            <strong>Triggers</strong>
-            Modifying the filters on charts 2 and 3 triggers changes to the parameters discussed above and updates the
-            charts to reflect the event.
-          </p>
-        </div>
-      </div>
-      
-      <div class="slide" data-anchor="chart1">
-        <h3>Number of Netflix Originals by Year</h3>
-        <div class="chart chart1">
-          <svg id="svg1"></svg>
-        </div>
-        <div class="intro">
-          <p>
-            This chart shows that the number of Netflix originals has increased each year over the past several years.
-            Note that the dataset includes originals up to June 1st, 2021, so although it looks like less originals were
-            produced in 2021 the reality is that Netflix is on track to produce a similar number of originals to 2020.
-          </p>
-          <p>
-            This charts proves that Netflix is continuing to invest more and more in original films, but the
-            questions still stands, have they improved film quality over time? Next, let's take a look at average IMDB
-            scores for each year to move closer to an answer.
-          </p>
-        </div>
-      </div>
-      <div class="slide" data-anchor="chart2">
-        <h3>Average IMDB Score of Netflix Originals by Year</h3>
-        <div class="chart chart2">
-          <svg id="svg2"></svg>
-          <input type="checkbox" checked="checked" value="2014" id="Action" onClick="updateChart2Data()">Action</input>
-          <input type="checkbox" checked="checked" value="2015" id="Adventure" onClick="updateChart2Data()">Adventure</input>
-          <input type="checkbox" checked="checked" value="2016" id="Animation" onClick="updateChart2Data()">Animation</input>
-          <input type="checkbox" checked="checked" value="2017" id="Anime" onClick="updateChart2Data()">Anime</input>
-          <input type="checkbox" checked="checked" value="2018" id="Christmas" onClick="updateChart2Data()">Christmas</input>
-          <input type="checkbox" checked="checked" value="2019" id="Comedy" onClick="updateChart2Data()">Comedy</input>
-          <input type="checkbox" checked="checked" value="2020" id="Crime" onClick="updateChart2Data()">Crime</input>
-          <input type="checkbox" checked="checked" value="2021" id="Documentary" onClick="updateChart2Data()">Documentary</input>
-          <input type="checkbox" checked="checked" value="2021" id="Drama" onClick="updateChart2Data()">Drama</input>
-          <input type="checkbox" checked="checked" value="2021" id="Fantasy" onClick="updateChart2Data()">Fantasy</input>
-          <input type="checkbox" checked="checked" value="2021" id="Family" onClick="updateChart2Data()">Family</input>
-          <input type="checkbox" checked="checked" value="2021" id="Musical" onClick="updateChart2Data()">Musical</input>
-          <input type="checkbox" checked="checked" value="2021" id="Mystery" onClick="updateChart2Data()">Mystery</input>
-          <input type="checkbox" checked="checked" value="2021" id="Other" onClick="updateChart2Data()">Other</input>
-          <input type="checkbox" checked="checked" value="2021" id="Romance" onClick="updateChart2Data()">Romance</input>
-          <input type="checkbox" checked="checked" value="2021" id="Science-Fiction" onClick="updateChart2Data()">Science Fiction</input>
-          <input type="checkbox" checked="checked" value="2021" id="Sports-film" onClick="updateChart2Data()">Sports film</input>
-          <input type="checkbox" checked="checked" value="2021" id="War" onClick="updateChart2Data()">War</input>
-          <input type="checkbox" checked="checked" value="2021" id="Western" onClick="updateChart2Data()">Western</input>
-        </div>
-        <div class="intro">
-          <p>
-            This chart shows that average IMDB scores have actually steadily declined over the past several years
-            starting in 2016. So far, Netflix original films in 2021 have received the worst scores since 2014.
-            Check/uncheck the checkboxes to see how scores have changed for a given set of genres.
-          </p>
-          <p>
-            This chart ultimately answers the question of whether or not Netflix has gotten better at producing original
-            films - on average, they haven't. That being said, it's difficult to see how all genres have scored for a given year.
-            Next (and finally), let's take a look at average scores for each genre to provide even more insight into
-            the data.
-          </p>
-        </div>
-      </div>
-      <div class="slide" data-anchor="chart3">
-        <h3>Average IMDB Score of Netflix Originals by Genre</h3>
-        <div class="chart chart3">
-          <svg id="svg3"></svg>
-          <input type="checkbox" checked="checked" value="2014" id="checkbox-2014" onClick="updateChart3Data()">2014</input>
-          <input type="checkbox" checked="checked" value="2015" id="checkbox-2015" onClick="updateChart3Data()">2015</input>
-          <input type="checkbox" checked="checked" value="2016" id="checkbox-2016" onClick="updateChart3Data()">2016</input>
-          <input type="checkbox" checked="checked" value="2017" id="checkbox-2017" onClick="updateChart3Data()">2017</input>
-          <input type="checkbox" checked="checked" value="2018" id="checkbox-2018" onClick="updateChart3Data()">2018</input>
-          <input type="checkbox" checked="checked" value="2019" id="checkbox-2019" onClick="updateChart3Data()">2019</input>
-          <input type="checkbox" checked="checked" value="2020" id="checkbox-2020" onClick="updateChart3Data()">2020</input>
-          <input type="checkbox" checked="checked" value="2021" id="checkbox-2021" onClick="updateChart3Data()">2021</input>
-        </div>
-        <div class="intro">
-          <p>
-            This chart shows that Netflix excels at producing original films in the Animation, Crime, Documentary, and
-            War genres. Check/uncheck the checkboxes to see how genres have scored for a given set of years.
-          </p>
-          <p>
-            From the past 3 charts it's clear that although Netflix is producing more and more original films the quality
-            of these films (according to IMDB) has declined over the past several years, but specific genres have clearly
-            outperformed others.
-          </p>
-        </div>
-      </div>
-      <div class="slide" data-anchor="source">
-        <h2>Sources</h2>
-        <div class="intro">
-          <p>
-            <strong>Dataset</strong><br/>
-            <a href="https://www.kaggle.com/luiscorter/netflix-original-films-imdb-scores" target="_blank">
-              https://www.kaggle.com/luiscorter/netflix-original-films-imdb-scores
-            </a>
-          </p>
-          <p>
-            <strong>Fullpage.js (used for slideshow)</strong><br/>
-            <a href="https://github.com/alvarotrigo/fullPage.js" target="_blank">
-              https://github.com/alvarotrigo/fullPage.js
-            </a>
-          </p>
-          <p>
-            <strong>Source code</strong><br/>
-            <a href="https://github.com/skyripley/cs416-data-visualization" target="_blank">
-              https://github.com/skyripley/cs416-data-visualization
-            </a>
-          </p>
-        </div>
+  <div id="cont">
+    <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
+    <p style="display:inline-block; vertical-align: top;" id="hint"></p>
+    <p style="display:inline-block; vertical-align: top;" id="intro"></p>
+    <div id="button_cont">
+      <button onclick="swit()"id="bt1">switch</button>
+      <button onclick="prev()">Prev</button>
+      <span id="page_id"></span>
+      <button onclick="next()">Next</button>
       </div>
     </div>
-  </div>
+</div>
+
+<script src='https://d3js.org/d3.v4.min.js'></script>
+<style> 
+</style>
+<body>
+
+<script>
+  var page_id=1;
+  var s=1;
+function GoPage1(){ 
+   d3.select('#page_id').text(`Page ${page_id}/3`)
+  d3.select('#bt1').style("visibility", "hidden")
+  var margin = {top: 100, right: 100, bottom: 100, left: 100},
+      width = 600,
+      height =400;
+
+  d3.select('#page').text(`${page_id}/3`)
+  
+  var svg = d3.select("#viz1")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
+  svg.append("circle")
+   
+    .attr("fill", "#FFF68F")
+    .attr("stroke", "yellow")
+    .attr("cy",70)
+    .attr("cx",135)
+    .attr("r",7)
+  d3.csv("massaged_data/1.csv",
+
+    function(d){
+      return { date : d.year, value : d.World }
+    },
+
+    function(data) {
+
+  svg.append("text")
+        
+        .attr("y",0)
+        .attr("x", 400)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","black")
+        .attr("font-size",12)
+        .text("hover on data points for more information ");
+
+    svg.append("text")
+        
+        .attr("y",15)
+        .attr("x", 160)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("Since 1989 year,Poverty ");
+      svg.append("text")
+        .attr("y",30)
+        .attr("x", 160)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("headcount ratio decreases drmatically ");
+      
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -190)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Poverty headcount ratio at $1.90 a day ");
+     
+      svg.append("text")
+        .attr("y",420)
+        .attr("x", 260)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Year");
+
+      var x = d3.scaleLinear()
+        .domain([1980,2020])
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(d3.axisBottom(x).tickSizeOuter(20))
+
+      var y = d3.scaleLinear()
+        .domain( [0,45] )
+        .range([ height, 0 ]);
+      svg.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(d3.axisLeft(y).tickSizeOuter(0))
+
     
 
-  <script src="scripts/scrolloverflow.min.js"></script>
-  <script src="scripts/fullpage.min.js"></script>
-  <script src="scripts/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3-color.v1.min.js"></script>
-  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
-  <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-  <script>
-    var charts = {};
-  </script>
-  <script src="scripts/chart1.js"></script>
-  <script src="scripts/chart2.js"></script>
-  <script src="scripts/chart3.js"></script>
-  <script src="scripts/main.js"></script>
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#87CEFA")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.date) })
+          .y(function(d) { return y(d.value) })
+          )
+    
+      svg.selectAll("myCircles")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("fill", "#87CEFA")
+          .attr("stroke", "none")
+          .attr("cx", function(d) { return x(d.date) })
+          .attr("cy", function(d) { return y(d.value) })
+          .attr("r", 5)
+          .on("mouseover", function(d){return tooltip.style("visibility", "visible"). html(`  year: ${d.date} <br> poverty ratio : ${d.value} `)
+          })
+          .on("mousemove", function(){return tooltip.style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY+10) + "px");})
+          .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+    // create a tooltip
+    var tooltip = d3.select("#content")
+      .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "1px")
+        .style("padding", "1px");
+    
+   
+   
+    
+  });  
+      d3.select('#intro')
+        .html(`
+    For almost 25 years, the number of people living in<br>
+    extreme poverty — on less than $1.90 per person per<br>
+    day was steadily declining. But the trend was <br>
+    interrupted in 2020, when poverty rose due to the <br>
+    disruption caused by the COVID-19 crisis combined <br>
+    with the effects of conflict and climate change<br> 
+    — which had already been slowing povertyreduction.<br>
+    In many regions, there still exists serious poverty<br>
+    in food.<br>
+      `)
+   
+    
+
+
+}
+function GoPage3(){
+
+  var color=['pink','#CDCDB4','#FFD700','#EEB4B4','#CD5555']
+  var margin = 100,
+      width = 600,
+      height = 400;
+
+
+ d3.select('#page_id').text(`Page ${page_id}/3`)
+  var svg = d3.select("#viz1")
+    .append("svg")
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin + "," + margin + ")")
+ d3.select('#bt1').style("visibility", "hidden")
+svg.append("circle")
+   .attr("fill", '#CDCDB4')
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+  svg.append("text")
+        .attr("y",65)
+        .attr("x", 570)
+        .attr("fill", '#CDCDB4')
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("High income ");
+   svg.append("circle")
+   .attr("fill", '#FFD700')
+   .attr("cy",95)
+   .attr("cx",528)
+   .attr("r",7)
+   svg.append("text")  
+        .attr("y",0)
+        .attr("x", 400)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","black")
+        .attr("font-size",12)
+        .text("hover on data points for more information ");
+   svg.append("text")
+   .attr("fill", '#FFD700')
+        .attr("y",85)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Upper middle income ");
+
+  svg.append("circle")
+   .attr("fill", '#EEB4B4')
+   .attr("cy",115)
+   .attr("cx",528)
+   .attr("r",7)
+ 
+   svg.append("text")
+        .attr("y",105)
+        .attr("x", 570)
+        .attr("fill",  '#EEB4B4')
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Lower middle income");
+   svg.append("circle")
+   .attr("fill", '#CD5555')
+   .attr("cy",135)
+   .attr("cx",528)
+   .attr("r",7)
+   svg.append("text")
+   .attr("fill", '#CD5555')
+        .attr("y",125)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Low income ");
+  
+  d3.csv("massaged_data/cost.csv",
+
+    function(d){
+      return { cost: d.cost,  Percent: d.Percent,population:d.population,country:d.country ,Income:d.Income}
+    },
+
+    function(data) {
+
+      var x = d3.scaleLinear()
+        .domain([0,8])
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(d3.axisBottom(x).tickSizeOuter(20))
+
+      var y = d3.scaleLinear()
+        .domain( [0,100] )
+        .range([ height, 0 ]);
+      svg.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(d3.axisLeft(y).tickSizeOuter(0))
+    
+        svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -180)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("share of population unable to afford a healthy diet (%)");
+        svg.append("text")
+     
+     .attr("y",420)
+     .attr("x", 260)
+     .attr("dy", "1em")
+     .style("text-anchor", "middle")
+     .text("cost of a healthy diet(current PPP$)");
+      
+
+          
+    svg.selectAll("circle")
+        .data(data).enter()
+        .append("circle")
+        .attr("fill", function(d){return color[d.Income]; })
+        .attr("stroke", "grey")
+        .attr("cx", function(d) { return x(d.cost)})
+        .attr("cy", function(d) { return y(d.Percent)})
+        .attr("r", function(d) {
+            return d.population/200 >2?d.population/200 :5
+        }) 
+        .style("opacity",0.5)
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible"). html(`country: ${d.country} <br> cost of a healthy diet : ${d.cost}<br>${d.population} millions of people cannot afford a healthy diet 
+        <br>${d.Percent} % of its population`)
+          })
+        .on("mousemove", function(){return tooltip.style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY+10) + "px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+       
+    
+
+   
+    
+    // create a tooltip
+    var tooltip = d3.select("#cont")
+      .append("div")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "2px")
+        .style("padding", "3px");
+    
+   
+  
+  
+  });
+}
+  function GoPage2(){
+    
+    var width =600;
+var height = 400;
+var margin =100;
+d3.select('#bt1').style("visibility", "visible")
+d3.select('#intro')
+        .html( `
+        <strong>global trends in food poverty:</strong><br>
+        The global share of people in food poverty has <br>
+        decreased overall since 1990,and year-on-year since<br>
+         the start of 1999 , falling from 22% to 6% in 2015.<br>
+        <br>
+        <strong>Regional trends in food poverty:</strong><br>
+        Since 1990, the number of people living in food poverty<br>
+        has increased by almost 20% in Middle East and North <br>
+        Africa, and over 25% in sub-Saharan Africa. These regions<br>
+        now represent 62% of all  people in food poverty<br>
+      `)
+
+ d3.select('#page_id').text(`Page ${page_id}/3`)
+ if(s==1){
+  part1();
+ }else{
+  part0();
+ }
+ function part1(){
+  var svg2 = d3.select("#viz1")
+    .append("svg")
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin + "," + margin + ")")
+  svg2.append("circle")
+   .attr("fill", "#D3D3D3")
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+  svg2.append("text")
+        .attr("y",65)
+        .attr("x", 570)
+        .attr("fill", "#D3D3D3")
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("other region ");
+   svg2.append("circle")
+   .attr("fill", "#CD3700")
+   .attr("cy",95)
+   .attr("cx",528)
+   .attr("r",7)
+   svg2.append("text")
+   .attr("fill", "#CD3700")
+        .attr("y",85)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text(" East Asia and Pacific ");
+d3.csv("massaged_data/poverty.csv",
+
+function(d){
+  return { east:d.east ,year:d.year,other:d.other}
+},
+
+function(data) {
+
+   var x2 = d3.scaleLinear()
+    .domain([1990,2015])
+    .range([ 0, width ]);
+      
+  var y2 = d3.scaleLinear()
+    .domain( [0,1500] )
+    .range([ height, 0 ]);				
+  var tooltip2 = d3.select("#viz2")
+      .append("div")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");  
+   svg2.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -70)
+        .attr("x", -250)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("number of people in food poverty(millions) ");
+    svg2.append("text")  
+     .attr("y",420)
+     .attr("x", 260)
+     .attr("dy", "1em")
+     .style("text-anchor", "middle")
+     .text("Year");
+  svg2.append("g")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(d3.axisBottom(x2).tickSizeOuter(20))
+     
+  svg2.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(d3.axisLeft(y2).tickSizeOuter(0))
+  svg2.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#D3D3D3")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x2(d.year) })
+          .y(function(d) { return y2(d.other) })
+          );
+	svg2.append("path")
+        .datum(data)
+        .attr("fill", "#D3D3D3")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x2(d.year) })
+          .y0( height )
+          .y1(function(d) {return y2(d.other) }))
+
+  svg2.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "#CD3700")
+    .attr("stroke-width", 4)
+    .attr("d", d3.line()
+      .x(function(d) { return x2(d.year) })
+      .y(function(d) { return y2(d.east) })
+      )
+  
+svg2.append("path")
+    .datum(data)
+    .attr("fill", "#CD3700")
+    .attr("fill-opacity", 1)
+    .attr("stroke", "none")
+    .attr("d", d3.area()
+      .x(function(d) { return x2(d.year) })
+      .y0( height )
+      .y1(function(d) {return y2(d.east) }))
+	
+   });
+ }
+ function part0(){
+  var svg1 = d3.select("#viz1")
+    .append("svg")
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin + "," + margin + ")")
+    
+  svg1.append("circle")
+   .attr("fill", "#D3D3D3")
+   .attr("cy",75)
+   .attr("cx",458)
+   .attr("r",7)
+  svg1.append("text")
+        .attr("y",65)
+        .attr("x", 500)
+        .attr("fill", "#D3D3D3")
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("other region ");
+   svg1.append("circle")
+   .attr("fill", "#FF7F50")
+   .attr("cy",95)
+   .attr("cx",458)
+   .attr("r",7)
+   svg1.append("text")
+   .attr("fill", "#FF7F50")
+        .attr("y",85)
+        .attr("x", 500)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Middle East ");
+   svg1.append("circle")
+   .attr("fill", "#CD661D")
+   .attr("cy",115)
+   .attr("cx",458)
+   .attr("r",7)
+   svg1.append("text")
+   .attr("fill", "#CD661D")
+        .attr("y",105)
+        .attr("x", 500)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("sub-Saharan Africa ");
+
+
+
+  d3.csv("massaged_data/poverty.csv",
+
+    function(d){
+      return { subSaharan:d.subSaharan , african : d.african, year : d.year,other:d.other }
+    },
+
+    function(data) {
+
+       var x = d3.scaleLinear()
+        .domain([1990,2015])
+        .range([ 0, width ]);
+					
+      var y = d3.scaleLinear()
+        .domain( [0,1500] )
+        .range([ height, 0 ]);				
+     svg1.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -70)
+        .attr("x", -250)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("number of people in food poverty(millions) ");
+    
+      svg1.append("text")
+     
+        .attr("y",420)
+        .attr("x", 260)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Year");
+      svg1.append("g")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(d3.axisBottom(x).tickSizeOuter(20))
+     
+      svg1.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(d3.axisLeft(y).tickSizeOuter(0))
+
+      svg1.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#D3D3D3")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(d.other) })
+          );
+     
+	svg1.append("path")
+        .datum(data)
+        .attr("fill", "#D3D3D3")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.other) })
+          )
+    svg1.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke","#FF7F50")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(d.african) })
+          );
+	svg1.append("path")
+        .datum(data)
+        .attr("fill", "#FF7F50")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.african) })
+          )
+    svg1.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke","#CD661D")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(d.subSaharan) })
+          );
+	svg1.append("path")
+        .datum(data)
+        .attr("fill", "#CD661D")
+        .attr("fill-opacity", 1)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.subSaharan) })
+          )
+
+
+
+          // create a tooltip
+    var tooltip = d3.select("#viz1")
+      .append("div")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");  
+	  
+
+  });
+
+ }
+ 
+  }
+
+function prev(){
+  if (page_id==1){return ;}
+  else{
+    page_id=page_id-1;
+    d3.select('#viz1').html("");
+    Go(page_id);
+  
+  }
+}
+function next(){
+  if (page_id==3){return ;}
+  else{
+    page_id=page_id+1;
+    d3.select('#viz1').html("");
+    Go(page_id);
+  
+  }
+}
+
+function Go(){
+  if (page_id==1){
+    
+    GoPage1(); 
+  }
+  if (page_id==2){
+    d3.select('#bt1').style("visibility", "visiable");
+    GoPage2(); 
+  }
+  
+  if (page_id==3){
+   
+    GoPage3(); 
+  }
+
+
+}
+function swit(){
+  if(page_id==1){return ;}
+  if(page_id==3){return ;}
+  if(s==0){
+      s=1;
+      d3.select('#viz1').html("");
+      GoPage2(); 
+  }else{
+    s=0;
+    d3.select('#viz1').html("");
+    GoPage2(); 
+  }
+}
+
+GoPage1(); 
+  
+</script>
 </body>
 </html>
