@@ -354,6 +354,11 @@ d3.select('#intro')
       .append("g")
       .attr("transform",
             "translate(" + margin + "," + margin + ")")
+   svg2.append("circle")
+   .attr("fill", '#CDCDB4')
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
   svg2.append("circle")
    .attr("fill", "#D3D3D3")
    .attr("cy",75)
@@ -378,6 +383,24 @@ d3.select('#intro')
         .attr("dy", "1em")
         .attr("font-size",15)
         .text(" East Asia and Pacific ");
+
+    svg2.append("text")
+        
+        .attr("y",5)
+        .attr("x", 200)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("Since 1989 year,Poverty ");
+      svg2.append("text")
+        .attr("y",20)
+        .attr("x", 200)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("headcount ratio decreases drmatically ");
 d3.csv("data_info/poverty.csv",
 
 function(d){
