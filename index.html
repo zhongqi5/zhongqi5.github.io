@@ -139,12 +139,13 @@ function GoPage1(){
           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     
 var tooltip = d3.select("#cont")
-      			.append("div")
+      	.append("div")
         .style("position", "absolute")
         .style("background-color", "white")
         .style("border-width", "1px")
         .style("border-radius", "3px")
-        .style("padding", "3px");  
+        .style("padding", "3px")
+	.style("border", "solid");
    
    
     
@@ -311,12 +312,11 @@ svg.append("circle")
     var tooltip = d3.select("#cont")
       .append("div")
         .style("position", "absolute")
-        .style("visibility", "visible")
         .style("background-color", "white")
-        .style("border", "solid")
         .style("border-width", "1px")
         .style("border-radius", "3px")
-        .style("padding", "3px");  
+        .style("padding", "3px")
+        .style("border", "solid");
   });
 }
 	
